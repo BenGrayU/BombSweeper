@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.util.*;
 
+/**
+* @author grayb4
+* */
 public class BombSquare extends GameSquare
 {
 	private boolean thisSquareHasBomb = false;
@@ -16,6 +19,10 @@ public class BombSquare extends GameSquare
 		thisSquareHasBomb = (r.nextInt(MINE_PROBABILITY) == 0);
 	}
 
+	/**
+	 * when a button is clicked it goes to this method which starts all below methods if nessasary.
+	 * */
+
 	public void clicked()
 	{
 		if(thisSquareHasBomb){
@@ -26,6 +33,11 @@ public class BombSquare extends GameSquare
 		}
 	}
 
+
+	/**
+	 * this checks the squares around the clicked square and sets the image to the amount of bobs around it.
+	 * If there are no bombs in the 3x3 area around it it then recurses for the spaces around it.
+	 * */
 	public void checkAround(){
 		this.clicked = true;
 		int bombs = 0;
@@ -49,6 +61,11 @@ public class BombSquare extends GameSquare
 
 
 	}
+
+	/**
+	 * This sets the image to the amount of bobs it has around it.
+	 * @param bombs the amount of bombs in the immediate area.
+	 * */
 
 	public String updateImage(int bombs){
 		String image = "Resources/images/";
@@ -84,6 +101,10 @@ public class BombSquare extends GameSquare
 		return image;
 	}
 
+
+	/**
+	 * when a game over is initated it reveals all bombs on the game map.
+	 * */
 	public void gameOver(){
 		for (int i = 0; i < board.getWidth(); i++) {
 			for (int j = 0; j < board.getHeight(); j++) {
