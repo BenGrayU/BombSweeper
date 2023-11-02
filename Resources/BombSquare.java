@@ -85,6 +85,14 @@ public class BombSquare extends GameSquare
 	}
 
 	public void gameOver(){
+		for (int i = 0; i < board.getWidth(); i++) {
+			for (int j = 0; j < board.getHeight(); j++) {
+				BombSquare s = (BombSquare) board.getSquareAt(i, j);
+				if(s != null && s.isBomb()){
+					s.setImage("Resources/images/bomb.png");
+				}
+			}
+		}
 
 	}
 
@@ -92,9 +100,6 @@ public class BombSquare extends GameSquare
 		return thisSquareHasBomb;
 	}
 
-	public boolean isClicked(){
-		return clicked;
-	}
 
 
 
